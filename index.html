@@ -3192,16 +3192,18 @@ Ctrl+M B">
         const longitude = position.coords.longitude;
 
         fetch('https://port-0-location-server-m3howeoye65c6a57.sel4.cloudtype.app/location', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-                latitude: latitude,
-                longitude: longitude
-            })
-        })
+    	method: 'POST',
+    	headers: {
+	        'Content-Type': 'application/json',
+        	'Access-Control-Allow-Origin': '*'
+    	},
+    	mode: 'cors',  // CORS 모드 명시적 설정
+    	credentials: 'include',
+   	body: JSON.stringify({
+        	latitude: latitude,
+        	longitude: longitude
+    		})
+	})
         .then(response => {
             if (response.ok) {
                 return response.json();
