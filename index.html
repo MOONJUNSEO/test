@@ -3191,12 +3191,12 @@ Ctrl+M B">
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
-        // Flask 서버의 /location 엔드포인트로 위치 정보 전송
         fetch('https://port-0-location-server-m3howeoye65c6a57.sel4.cloudtype.app/location', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({
                 latitude: latitude,
                 longitude: longitude
