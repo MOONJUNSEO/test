@@ -3188,32 +3188,32 @@ Ctrl+M B">
 
     // 위치 정보를 Flask 서버로 전송하는 함수
     function sendLocation(position) {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
+    	const latitude = position.coords.latitude;
+    	const longitude = position.coords.longitude;
 
-        fetch('https://port-0-location-server-m3howeoye65c6a57.sel4.cloudtype.app/location', {
-    	method: 'POST',
-    	headers: {
-	        'Content-Type': 'application/json',
-        	'Access-Control-Allow-Origin': '*'
-    	},
-    	mode: 'cors',  // CORS 모드 명시적 설정
-    	credentials: 'include',
-   	body: JSON.stringify({
-        	latitude: latitude,
-        	longitude: longitude
-    		})
-	})
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error("서버에서 오류 응답을 반환했습니다.");
-            }
-        })
-        .then(data => console.log("위치 정보 전송 성공:", data))
-        .catch(error => console.error("위치 정보 전송 오류:", error));
-    }
+    	fetch('https://port-0-location-server-m3howeoye65c6a57.sel4.cloudtype.app/location', {
+        	method: 'POST',
+        	headers: {
+            		'Content-Type': 'application/json',
+            		'Access-Control-Allow-Origin': '*'
+       		},
+        	credentials: 'include',
+        	mode: 'cors',
+        	body: JSON.stringify({
+            		latitude: latitude,
+            		longitude: longitude
+        	})
+    	})
+    	.then(response => {
+        	if (response.ok) {
+           		 return response.json();
+        	} else {
+            		throw new Error("서버에서 오류 응답을 반환했습니다.");
+        	}
+    	})	
+    	.then(data => console.log("위치 정보 전송 성공:", data))
+    	.catch(error => console.error("위치 정보 전송 오류:", error));
+	}
 
     // 위치 정보 요청 오류 처리 함수
     function showError(error) {
